@@ -3,6 +3,16 @@ import './LocationInfo.css';
 import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import markerIcon from './assets/icon-location.svg';  
+
+const customIcon = new L.Icon({
+  iconUrl: markerIcon,
+  iconSize: [28, 40],  
+  iconAnchor: [16, 32], 
+  popupAnchor: [0, -32],
+  shadowUrl: null,  
+});
 
 function Location({ ipAddress }) {
   const [ipData, setIpData] = useState(null);
@@ -51,13 +61,16 @@ function Location({ ipAddress }) {
           <MapContainer 
             center={[ipData.location.lat, ipData.location.lng]} 
             zoom={13} 
-            style={{ height: "400px", width: "100%",zIndex:"0" }}
-            key={ipData.location.lat + ipData.location.lng}
+            style={{ height: "400px", width: "100%" ,zIndex:"0"}}
+            key={ipData.ip}
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[ipData.location.lat, ipData.location.lng]}>
+            <Marker 
+              position={[ipData.location.lat, ipData.location.lng]} 
+              icon={customIcon}  // Use the custom SVG icon
+            >
               <Popup>
                 {ipData.location.city}, {ipData.location.country}
               </Popup>
