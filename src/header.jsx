@@ -11,7 +11,7 @@ function Header({ onSearch }) {
       return;
     }
     onSearch(ipAddress);
-    setIpAddress('');  // Clear the input field after search
+    setIpAddress('');  
   }
 
   return (
