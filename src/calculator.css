@@ -91,6 +91,7 @@ margin-left: 12px;
 display: flex;
 flex-direction: row;
 column-gap: 10px;
+color: hsl(259, 100%, 65%);
 }
 .result h1 span div{
     display: inline-block;
