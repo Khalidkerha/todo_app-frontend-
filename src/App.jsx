@@ -1,32 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Header from './header';
 import './App.css';
-import Location from './LocationInfo';
-import axios from 'axios';
-
+import Calculator from './calculator';
 function App() {
-  const [ipAddress, setIpAddress] = useState('');
-
-  useEffect(() => {
-    // Fetch the user's IP address when the component mounts
-    axios.get('https://api.ipify.org?format=json')
-      .then(response => {
-        const userIp = response.data.ip;
-        setIpAddress(userIp);
-      })
-      .catch(error => {
-        console.error('Error fetching IP address:', error);
-      });
-  }, []);
-
-  const handleSearch = (ip) => {
-    setIpAddress(ip);
-  }
-
-  return (
+   return (
     <>
-      <Header onSearch={handleSearch} />
-      <Location ipAddress={ipAddress} />
+ <Calculator/>
     </>
   );
 }
