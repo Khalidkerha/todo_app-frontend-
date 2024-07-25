@@ -1,12 +1,8 @@
 body{
-    font-family:  'Poppins', sans-serif;
+    font-family:  'Josefin Sans', sans-serif;
     margin: 0;
     padding: 0;
 height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-   
-    background-color:  hsl(0, 0%, 90%);
+background-color:  hsl(240, 20%, 12%);
+
 }
