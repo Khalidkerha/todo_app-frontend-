@@ -9,6 +9,7 @@ function List_todo({ tasks, clearCompletedTasks, inputColor, textColor, borderCo
     const [filterAllColor, setFilterAllColor] = useState("hsl(234, 11%, 52%)");
     const [filterActiveColor, setFilterActiveColor] = useState("hsl(234, 11%, 52%)");
     const [filterCompletedColor, setFilterCompletedColor] = useState("hsl(234, 11%, 52%)");
+    const [clearCompletedColor, setClearCompletedColor] = useState("hsl(234, 11%, 52%)");
     const [hoveredTask, setHoveredTask] = useState(null);
     const [hoveredFilter, setHoveredFilter] = useState(null);
 
@@ -46,12 +47,17 @@ function List_todo({ tasks, clearCompletedTasks, inputColor, textColor, borderCo
         setTasksshown(activeTasks);
         setChecked(activeChecked);
         clearCompletedTasks(activeTasks);
+        setFilterAllColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
+        setFilterActiveColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
+        setFilterCompletedColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
+        setClearCompletedColor(isDarkMode ? "hsl(220, 98%, 61%)" : "hsl(220, 98%, 61%)");
     };
 
     const showAllTasks = () => {
         setFilterAllColor(isDarkMode ? "hsl(220, 98%, 61%)" : "hsl(220, 98%, 61%)");
         setFilterActiveColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
         setFilterCompletedColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
+        setClearCompletedColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
         setTasksshown(tasks);
     };
 
@@ -59,6 +65,7 @@ function List_todo({ tasks, clearCompletedTasks, inputColor, textColor, borderCo
         setFilterAllColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
         setFilterActiveColor(isDarkMode ? "hsl(220, 98%, 61%)" : "hsl(220, 98%, 61%)");
         setFilterCompletedColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
+        setClearCompletedColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
         const activeTasks = tasks.filter((_, index) => !checked[index]);
         setTasksshown(activeTasks);
     };
@@ -69,6 +76,7 @@ function List_todo({ tasks, clearCompletedTasks, inputColor, textColor, borderCo
         setFilterAllColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
         setFilterActiveColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
         setFilterCompletedColor(isDarkMode ? "hsl(220, 98%, 61%)" : "hsl(220, 98%, 61%)");
+        setClearCompletedColor(isDarkMode ? "hsl(234, 11%, 52%)" : "hsl(234, 11%, 52%)");
     };
 
     useEffect(() => {
@@ -124,7 +132,7 @@ function List_todo({ tasks, clearCompletedTasks, inputColor, textColor, borderCo
                                 {task}
                             </p>
                         </div>
-                        <div>
+                        <div className="croos_btn">
                             <button
                                 className="cross"
                                 onClick={() => handleDeleteTask(task)}
@@ -177,7 +185,7 @@ function List_todo({ tasks, clearCompletedTasks, inputColor, textColor, borderCo
                         <a onClick={handleClearCompletedTasks}
                         onMouseEnter={() => setHoveredFilter("clear")}
                         onMouseLeave={() => setHoveredFilter(null)}
-                        style={{ color: hoveredFilter === "clear" ? (isDarkMode ? "white" : "black") : filterCompletedColor }}
+                        style={{ color: hoveredFilter === "clear" ? (isDarkMode ? "white" : "black") : clearCompletedColor }}
                         >Clear Completed</a>
                     </div>
                 </div>
